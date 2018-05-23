@@ -50,7 +50,12 @@ $config = [
             'rules' => [
             ],
         ],
-        
+    
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\module\admin\Module',
+        ],
     ],
     'params' => $params,
 ];
