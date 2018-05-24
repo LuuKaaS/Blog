@@ -5,6 +5,7 @@ namespace app\modules\admin\controllers;
 use Yii;
 use app\models\ActiveRecord\Article;
 use app\models\forms\ArticleSearch;
+use app\models\ActiveRecord\ImageUpload;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -123,5 +124,11 @@ class ArticleController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    public function actionSetImage($id)
+    {
+        $model = new ImageUpload;
+        
+        return $this->render('image', ['model'=>$model]);
     }
 }
