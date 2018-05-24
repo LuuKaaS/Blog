@@ -1,5 +1,5 @@
 <?php
-   namespace app\models;
+   namespace app\models\forms;
    use Yii;
    use yii\base\Model;
    class RegistrationForm extends Model {

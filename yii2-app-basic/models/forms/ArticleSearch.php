@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace app\models\forms;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Article;
+use app\models\ActiveRecord\Article;
 
 /**
  * ArticleSearch represents the model behind the search form of `app\models\Article`.
