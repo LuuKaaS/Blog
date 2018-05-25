@@ -10,6 +10,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@web' => dirname(__DIR__).'/../web',
     ],
     'components' => [
         'request' => [
