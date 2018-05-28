@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\forms\ImageUpload;
+use app\models\ActiveRecord\Article;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ArticleSearch */
@@ -30,6 +32,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'content:ntext',
             'date',
+            [
+                'format' => 'html',
+                'label' => 'Image',
+                'value' => function($data)
+                {
+//                var_dump($data->getImage());die;
+                return Html::img($data->getImage());
+                }
+            ],
             //'image',
             //'viewed',
             //'user_id',

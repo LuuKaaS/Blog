@@ -3,6 +3,7 @@
 namespace app\models\ActiveRecord;
 
 use Yii;
+use app\models\forms\ImageUpload;
 
 /**
  * This is the model class for table "article".
@@ -69,6 +70,27 @@ class Article extends \yii\db\ActiveRecord
     {
         $this->image = $filename;
         return $this->save(false);
+    }
+    
+    public function getImage()
+    {
+        if($this->image)
+        {
+            return '/uploads/' . $this->image;
+        }
+        return '/no-image.jpg';
+    }
+
+    public function deleteImage()
+    {
+        $imageUploadModel = new ImageUpload();
+        $imageUploadModel->deleteCurrentImage($this->image);
+    }
+    
+    public function beforeDelete()
+    {
+        $this->deleteImage();
+        return parent::beforeDelete();
     }
 
 }
