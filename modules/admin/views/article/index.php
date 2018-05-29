@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($data)
                 {
 //                var_dump($data->getImage());die;
-                return Html::img($data->getImage());
+                return Html::img($data->getImage(), ['width'=>200]);
                 }
             ],
             //'image',

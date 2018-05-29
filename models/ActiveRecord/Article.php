@@ -4,6 +4,7 @@ namespace app\models\ActiveRecord;
 
 use Yii;
 use app\models\forms\ImageUpload;
+use app\models\ActiveRecord\Category;
 
 /**
  * This is the model class for table "article".
@@ -76,6 +77,7 @@ class Article extends \yii\db\ActiveRecord
     {
         if($this->image)
         {
+//          return __DIR__."/../../web/uploads/" . $this->image;
             return '/uploads/' . $this->image;
         }
         return '/no-image.jpg';
@@ -91,6 +93,11 @@ class Article extends \yii\db\ActiveRecord
     {
         $this->deleteImage();
         return parent::beforeDelete();
+    }
+    
+     public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
 }

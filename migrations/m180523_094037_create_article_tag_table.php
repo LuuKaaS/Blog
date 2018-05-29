@@ -51,6 +51,41 @@ class m180523_094037_create_article_tag_table extends Migration
                 'id',
                 'CASCADE'
                 );
+        
+        // --------------------------create index for column 'user_id'
+        $this->createIndex(
+                'idx-user_id',
+                'article',
+                'user_id'
+                );
+        
+        // ---------------------------add foreing key for table 'user'
+        $this->addForeignKey(
+                'fk-user_id',
+                'article',
+                'user_id',
+                'user',
+                'id',
+                'CASCADE'
+                );
+        
+           // create index for column 'category_id'
+        $this->createIndex(
+                'idx-category_id',
+                'article',
+                'category_id'
+                );
+        
+        // add foreing key for table 'category'
+        $this->addForeignKey(
+                'fk-category_id',
+                'article',
+                'category_id',
+                'category',
+                'id',
+                'CASCADE'
+                );
+        
     }
 
     /**
