@@ -147,8 +147,7 @@ class ArticleController extends Controller
     
     public function actionSetCategory($id)
    {
-        $category = Category::findOne(1);
-        var_dump($category);die;
+         
         $article = $this->findModel($id);
         $selectedCategory = $article->category;
 //        var_dump($article);
@@ -166,6 +165,22 @@ class ArticleController extends Controller
             'article'=>$article,
             'selectedCategory'=>$selectedCategory,
             'categories'=>$categories
+        ]);
+    }
+    
+    public function actionSetTags($id)
+    {
+        $article = $this->findModel($id);
+        $selectedTags = $article->getSelectedTags();
+//        var_dump($selectedTags);die;
+        $tags =[
+            1 => 'kure',
+            2 => 'parek'
+        ];
+        
+        return $this->render('tags',[
+            'selectedTags'=>$selectedTags,
+            'tags'=>$tags
         ]);
     }
 }

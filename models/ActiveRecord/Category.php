@@ -41,6 +41,11 @@ class Category extends \yii\db\ActiveRecord
         ];
     }
     
+    public function getArticles()
+    {
+        return $this->hasMany(Articles::className(), ['category_id' => 'id']);
+    }
+    
     public static function getAll()
     {
         return Category::find()->all();

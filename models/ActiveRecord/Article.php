@@ -5,6 +5,7 @@ namespace app\models\ActiveRecord;
 use Yii;
 use app\models\forms\ImageUpload;
 use app\models\ActiveRecord\Category;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "article".
@@ -109,6 +110,17 @@ class Article extends \yii\db\ActiveRecord
           $this->link('category', $category);
           return true;
         }
-        
+    }
+    
+    public function getTags()
+    {
+        return $this->hasMany(Tag::className(), ['id' => 'tag_id'])
+            ->viaTable('article_tag', ['article_id' => 'id']);
+    }
+    
+    public function getSelectedTags()
+    {
+        $selectedTags = $this->getTags()->select('id')->asArray()->all();
+        return ArrayHelper::getColumn($selectedTags, 'id');
     }
 }
