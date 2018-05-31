@@ -44,6 +44,7 @@ class Article extends \yii\db\ActiveRecord
             [['date'], 'date', 'format'=> 'php:Y-m-d'],
             [['date'], 'default', 'value'=> date('Y-m-d')],
             [['title'], 'string', 'max' => 255],
+            [['category_id'], 'number']
         ];
         
     }
@@ -95,9 +96,9 @@ class Article extends \yii\db\ActiveRecord
         return parent::beforeDelete();
     }
     
-     public function getCategory()
+    public function getCategory()
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
-
+   
 }
