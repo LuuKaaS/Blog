@@ -11,6 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use app\models\ActiveRecord\Category;
+use app\models\ActiveRecord\Tag;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -173,11 +174,14 @@ class ArticleController extends Controller
         $article = $this->findModel($id);
         $selectedTags = $article->getSelectedTags();
 //        var_dump($selectedTags);die;
-        $tags =[
-            1 => 'kure',
-            2 => 'parek'
-        ];
+        $tags = ArrayHelper::map(Tag::find()->all(), 'id', 'title');
         
+        if(yii::$app->request->isPost)
+        {
+            $tags=Yii::$app->request->post('tags');
+            $article->saveTags($tags);
+            return $this->redirect(['view','id'=>$article->id]);
+        }
         return $this->render('tags',[
             'selectedTags'=>$selectedTags,
             'tags'=>$tags
