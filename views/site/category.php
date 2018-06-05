@@ -20,10 +20,10 @@
                                 <header class="entry-header text-uppercase">
                                     <h6><a href="#"> Travel</a></h6>
 
-                                    <h1 class="entry-title"><a href="blog.html">Home is peaceful place</a></h1>
+                                    <h1 class="entry-title"><a href="blog.html">Category View</a></h1>
                                 </header>
                                 <div class="entry-content">
-                                    <p>Lorem ipsum dolor sit amet, consadipsinesed diam nonumy eirmod tevidubore et
+                                    <p>Category View   Category View   Category View   Category View   Category View   Category View   
                                     </p>
                                 </div>
                                 <div class="social-share">

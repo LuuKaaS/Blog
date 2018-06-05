@@ -7,9 +7,12 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
-use app\models\RegistrationForm;
+use app\models\forms\LoginForm;
+use app\models\forms\ContactForm;
+use app\models\forms\Signup;
+use app\models\ActiveRecord\Article;
+use yii\widgets\LinkPager;
+use yii\data\Pagination;
 
 class SiteController extends Controller
 {
@@ -62,10 +65,29 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+    // build a DB query to get all articles with status = 1
+    $query = Article::find();  
+    
+    // get the total number of articles (but do not fetch the article data yet)
+    $count = $query->count();
+
+    // create a pagination object with the total count
+    $pagination = new Pagination(['totalCount' => $count, 'pageSize' =>1]);
+
+    // limit the query using the pagination and retrieve the articles
+    $articles = $query->offset($pagination->offset)
+      ->limit($pagination->limit)
+      ->all();
+    
+        return $this->render([
+            'articles' => $articles,
+            'pagination'=>$pagination
+        ]);
     }
     
-    public function actionView()
+    
+    
+    public function actionSingle()
     {
         return $this->render('single');
     }
@@ -126,10 +148,10 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionRegistration() 
+    public function actionSignup() 
     {
-        $model = new RegistrationForm();
-        return $this->render('registration', ['model' => $model]);
+        $model = new Signup();
+        return $this->render('signup', ['model' => $model]);
     }
     /**
      * Displays about page.

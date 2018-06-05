@@ -52,8 +52,8 @@ PublicAsset::register($this);
                 <div class="i_con">
                     <ul class="nav navbar-nav text-uppercase">
                         <?php if(Yii::$app->user->isGuest):?>
-                            <li><a href="<?= Url::toRoute(['auth/login'])?>">Login</a></li>
-                            <li><a href="<?= Url::toRoute(['auth/signup'])?>">Register</a></li>
+                            <li><a href="<?= Url::toRoute(['site/login'])?>">Login</a></li>
+                            <li><a href="<?= Url::toRoute(['site/signup'])?>">Register</a></li>
                         <?php else: ?>
                             <?= Html::beginForm(['/auth/logout'], 'post')
                             . Html::submitButton(
@@ -136,7 +136,7 @@ PublicAsset::register($this);
                                         <img src="/images/author.png" alt="">
 
                                         <div class="author-text">
-                                            <h4>Sophia</h4>
+                                            <h4>Lukas</h4>
 
                                             <h4>CEO, ReadyTheme</h4>
                                         </div>
@@ -155,7 +155,7 @@ PublicAsset::register($this);
                                         <img src="/images/author.png" alt="">
 
                                         <div class="author-text">
-                                            <h4>Sophia</h4>
+                                            <h4>Herman</h4>
 
                                             <h4>CEO, ReadyTheme</h4>
                                         </div>
