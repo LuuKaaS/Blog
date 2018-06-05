@@ -5,7 +5,7 @@
             <div class="col-md-8">
                 <article class="post">
                     <div class="post-thumb">
-                        <a href="blog.html"><img src="public/images/blog-1.jpg" alt=""></a>
+                        <a href="blog.html"><img src="/images/blog-1.jpg" alt=""></a>
 
                         <a href="blog.html" class="post-thumb-overlay text-center">
                             <div class="text-uppercase text-center">View Post</div>
@@ -15,16 +15,13 @@
                         <header class="entry-header text-center text-uppercase">
                             <h6><a href="#"> Travel</a></h6>
 
-                            <h1 class="entry-title"><a href="blog.html">Home is peaceful place</a></h1>
+                            <h1 class="entry-title"><a href="blog.html">Single.php</a></h1>
 
 
                         </header>
                         <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.
+                            <p>Single.php   Single.php   Single.php   Single.php   Single.php   Single.php   Single.php   
+                                
                             </p>
 
                             <div class="btn-continue-reading text-center text-uppercase">
@@ -41,7 +38,7 @@
                 </article>
                 <article class="post">
                     <div class="post-thumb">
-                        <a href="blog.html"><img src="public/images/abc.jpg" alt=""></a>
+                        <a href="blog.html"><img src="/images/abc.jpg" alt=""></a>
 
                         <a href="blog.html" class="post-thumb-overlay text-center">
                             <div class="text-uppercase text-center">View Post</div>
@@ -56,11 +53,7 @@
 
                         </header>
                         <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.
+                            <p>Single.php   Single.php   Single.php   Single.php   Single.php   Single.php   Single.php   
                             </p>
 
                             <div class="btn-continue-reading text-center text-uppercase">
@@ -77,7 +70,7 @@
                 </article>
                 <article class="post">
                     <div class="post-thumb">
-                        <a href="blog.html"><img src="public/images/blog-2.jpg" alt=""></a>
+                        <a href="blog.html"><img src="/images/blog-2.jpg" alt=""></a>
 
                         <a href="blog.html" class="post-thumb-overlay text-center">
                             <div class="text-uppercase text-center">View Post</div>
@@ -113,7 +106,7 @@
                 </article>
                 <article class="post">
                     <div class="post-thumb">
-                        <a href="blog.html"><img src="public/images/blog-3.jpg" alt=""></a>
+                        <a href="blog.html"><img src="/images/blog-3.jpg" alt=""></a>
 
                         <a href="blog.html" class="post-thumb-overlay text-center">
                             <div class="text-uppercase text-center">View Post</div>
@@ -150,7 +143,7 @@
 
                 <article class="post">
                     <div class="post-thumb">
-                        <a href="blog.html"><img src="public/images/blog-4.jpg" alt=""></a>
+                        <a href="blog.html"><img src="/images/blog-4.jpg" alt=""></a>
 
                         <a href="blog.html" class="post-thumb-overlay text-center">
                             <div class="text-uppercase text-center">View Post</div>
@@ -201,7 +194,7 @@
                         <div class="popular-post">
 
 
-                            <a href="#" class="popular-img"><img src="public/images/p1.jpg" alt="">
+                            <a href="#" class="popular-img"><img src="/images/p1.jpg" alt="">
 
                                 <div class="p-overlay"></div>
                             </a>
@@ -214,7 +207,7 @@
                         </div>
                         <div class="popular-post">
 
-                            <a href="#" class="popular-img"><img src="public/images/p1.jpg" alt="">
+                            <a href="#" class="popular-img"><img src="/images/p1.jpg" alt="">
 
                                 <div class="p-overlay"></div>
                             </a>
@@ -227,7 +220,7 @@
                         <div class="popular-post">
 
 
-                            <a href="#" class="popular-img"><img src="public/images/p1.jpg" alt="">
+                            <a href="#" class="popular-img"><img src="/images/p1.jpg" alt="">
 
                                 <div class="p-overlay"></div>
                             </a>
@@ -246,7 +239,7 @@
 
                             <div class="media">
                                 <div class="media-left">
-                                    <a href="#" class="popular-img"><img src="public/images/r-p.jpg" alt="">
+                                    <a href="#" class="popular-img"><img src="/images/r-p.jpg" alt="">
                                         <div class="p-overlay"></div>
                                     </a>
                                 </div>
@@ -261,7 +254,7 @@
 
                             <div class="media">
                                 <div class="media-left">
-                                    <a href="#" class="popular-img"><img src="public/images/r-p.jpg" alt="">
+                                    <a href="#" class="popular-img"><img src="/images/r-p.jpg" alt="">
                                         <div class="p-overlay"></div>
                                     </a>
                                 </div>
@@ -276,7 +269,7 @@
 
                             <div class="media">
                                 <div class="media-left">
-                                    <a href="#" class="popular-img"><img src="public/images/r-p.jpg" alt="">
+                                    <a href="#" class="popular-img"><img src="/images/r-p.jpg" alt="">
                                         <div class="p-overlay"></div>
                                     </a>
                                 </div>
@@ -291,7 +284,7 @@
 
                             <div class="media">
                                 <div class="media-left">
-                                    <a href="#" class="popular-img"><img src="public/images/r-p.jpg" alt="">
+                                    <a href="#" class="popular-img"><img src="/images/r-p.jpg" alt="">
                                         <div class="p-overlay"></div>
                                     </a>
                                 </div>
