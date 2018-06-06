@@ -79,6 +79,16 @@ class ArticleController extends Controller
             'model' => $model,
         ]);
     }
+//    
+//    public function actionsaveArticle()
+//    {
+//       $model = $this->findModel($id); 
+//       
+//       if ($model->load(Yii::$app->request->post()) && $model->save()) 
+//        {
+//            return $this->redirect(['view', 'id' => $model->id]);   
+//        }
+//    }
 
     /**
      * Updates an existing Article model.
@@ -91,7 +101,7 @@ class ArticleController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->saveArticle()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -150,8 +160,8 @@ class ArticleController extends Controller
    {
          
         $article = $this->findModel($id);
-        $selectedCategory = $article->category;
-//        var_dump($article);
+        $selectedCategory = $article->category->title;
+        var_dump($selectedCategory);
         $categories = ArrayHelper::map(Category::find()->all(), 'id', 'title');
         
         if(Yii::$app->request->isPost)

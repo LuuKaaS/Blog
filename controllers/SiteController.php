@@ -11,7 +11,8 @@ use app\models\forms\LoginForm;
 use app\models\forms\ContactForm;
 use app\models\forms\Signup;
 use app\models\ActiveRecord\Article;
-use yii\data\Pagination;
+use app\models\ActiveRecord\Category;
+
 
 class SiteController extends Controller
 {
@@ -64,29 +65,21 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        // build a DB query to get all articles with status = 1
-        $query = Article::find();           // null
-        
-        // get the total number of articles (but do not fetch the article data yet)
-        $count = $query->count();           // 2
-        
-        // create a pagination object with the total count
-        $pagination = new Pagination(['totalCount' => $count, 'pageSize' =>1]);
-        
-        // limit the query using the pagination and retrieve the articles
-        $articles = $query->offset($pagination->offset)
-          ->limit($pagination->limit)
-          ->all();
-//        var_dump($articles);die;        // data from page
-            return $this->render('index',[
-                'articles' => $articles,
-                'pagination'=>$pagination
+        $data = Article::getAll(1);
+
+        $popular = Article::getPopular();
+        $recent = Article::getRecent();
+        $categories = Category::getAll();
+//        var_dump($categories);die;
+        return $this->render('index',[
+            'articles' => $data ['articles'],
+            'pagination' =>$data['pagination'],
+            'popular' =>$popular,
+            'recent' => $recent,
+            'categories' => $categories
             ]);
             
     }
-    
-    
-    
     public function actionSingle()
     {
         return $this->render('single');
