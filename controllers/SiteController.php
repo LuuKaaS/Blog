@@ -11,7 +11,6 @@ use app\models\forms\LoginForm;
 use app\models\forms\ContactForm;
 use app\models\forms\Signup;
 use app\models\ActiveRecord\Article;
-use yii\widgets\LinkPager;
 use yii\data\Pagination;
 
 class SiteController extends Controller
@@ -65,24 +64,25 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-    // build a DB query to get all articles with status = 1
-    $query = Article::find();  
-    
-    // get the total number of articles (but do not fetch the article data yet)
-    $count = $query->count();
-
-    // create a pagination object with the total count
-    $pagination = new Pagination(['totalCount' => $count, 'pageSize' =>1]);
-
-    // limit the query using the pagination and retrieve the articles
-    $articles = $query->offset($pagination->offset)
-      ->limit($pagination->limit)
-      ->all();
-    
-        return $this->render([
-            'articles' => $articles,
-            'pagination'=>$pagination
-        ]);
+        // build a DB query to get all articles with status = 1
+        $query = Article::find();           // null
+        
+        // get the total number of articles (but do not fetch the article data yet)
+        $count = $query->count();           // 2
+        
+        // create a pagination object with the total count
+        $pagination = new Pagination(['totalCount' => $count, 'pageSize' =>1]);
+        
+        // limit the query using the pagination and retrieve the articles
+        $articles = $query->offset($pagination->offset)
+          ->limit($pagination->limit)
+          ->all();
+//        var_dump($articles);die;        // data from page
+            return $this->render('index',[
+                'articles' => $articles,
+                'pagination'=>$pagination
+            ]);
+            
     }
     
     

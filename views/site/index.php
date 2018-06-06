@@ -7,40 +7,45 @@ use yii\widgets\LinkPager;
         <div class="row">
             <div class="col-md-8">
                 <?php foreach ($articles as $article):?>
-                 <article class="post">
-                        <div class="post-thumb">
-                            <a href="<?= Url::toRoute(['site/view', 'id'=>$article->id]);?>"><img src="<?= $article->getImage();?>" alt=""></a>
+                <article class="post">
+                    <div class="post-thumb">
+                        <a href="#"><img src="/images/blog-1.jpg" alt=""></a>
 
-                            <a href="<?= Url::toRoute(['site/view', 'id'=>$article->id]);?>" class="post-thumb-overlay text-center">
-                                <div class="text-uppercase text-center">View Post</div>
-                            </a>
-                        </div>
-                        <div class="post-content">
-                            <header class="entry-header text-center text-uppercase">
-                                <h6><a href="<?= Url::toRoute(['site/category','id'=>$article->category->id])?>"> <?= $article->category->title; ?></a></h6>
+                        <a href="#" class="post-thumb-overlay text-center">
+                            <div class="text-uppercase text-center">View Post</div>
+                        </a>
+                    </div>
+                    <div class="post-content">
+                        <header class="entry-header text-center text-uppercase">
+                            <h6><a href="#"> Travel</a></h6>
 
-                                <h1 class="entry-title"><a href="<?= Url::toRoute(['site/view', 'id'=>$article->id]);?>"><?= $article->title?></a></h1>
+                            <h1 class="entry-title"><a href="#">Single.php</a></h1>
 
 
-                            </header>
-                            <div class="entry-content">
-                                <p><?= $article->description?>
-                                </p>
+                        </header>
+                        <div class="entry-content">
+                            <p>Single.php   Single.php   Single.php   Single.php   Single.php   Single.php   Single.php   
+                                
+                            </p>
 
-                                <div class="btn-continue-reading text-center text-uppercase">
-                                    <a href="<?= Url::toRoute(['site/view', 'id'=>$article->id]);?>" class="more-link">Continue Reading</a>
-                                </div>
-                            </div>
-                            <div class="social-share">
-                                <span class="social-share-title pull-left text-capitalize">By <?= $article->author->name; ?> On <?= $article->getDate();?></span>
-                                <ul class="text-center pull-right">
-                                    <li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li><?= (int) $article->viewed?>
-                                </ul>
+                            <div class="btn-continue-reading text-center text-uppercase">
+                                <a href="#" class="more-link">Continue Reading</a>
                             </div>
                         </div>
-                    </article>   
+                        <div class="social-share">
+                            <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> On February 12, 2016</span>
+                            <ul class="text-center pull-right">
+                                <li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li>325
+                            </ul>
+                        </div>
+                    </div>
+                </article> 
                 <?php endforeach;?>
-                        
+                <?php
+                echo LinkPager::widget([
+                'pagination' => $pagination,
+                ]);
+                ?>       
                 <article class="post">
                     <div class="post-thumb">
                         <a href="blog.html"><img src="/images/blog-1.jpg" alt=""></a>
@@ -215,10 +220,7 @@ use yii\widgets\LinkPager;
                         </div>
                     </div>
                 </article>
-                <?php
-                echo LinkPager::widget([
-                'pagination' => $pagination,
-                ]);?>
+                
                     
             </div>
             <div class="col-md-4" data-sticky_column>
