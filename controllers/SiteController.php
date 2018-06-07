@@ -66,28 +66,50 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $data = Article::getAll(1);
-
         $popular = Article::getPopular();
         $recent = Article::getRecent();
         $categories = Category::getAll();
 //        var_dump($categories);die;
         return $this->render('index',[
             'articles' => $data ['articles'],
-            'pagination' =>$data['pagination'],
-            'popular' =>$popular,
+            'pagination' => $data['pagination'],
+            'popular' => $popular,
             'recent' => $recent,
             'categories' => $categories
             ]);
             
     }
-    public function actionSingle()
+    public function actionView($id)
     {
-        return $this->render('single');
+        $article = Article::findOne($id);
+        $popular = Article::getPopular();
+        $recent = Article::getRecent();
+        $categories = Category::getAll();
+        
+        return $this->render('single',[
+            'article' => $article,
+            'popular' => $popular,
+            'recent' => $recent,
+            'categories' => $categories
+        ]);
     }
     
-    public function actionCategory ()
+    public function actionCategory ($id)
     {
-        return $this->render('category');
+        $data = Category::getArticlesByCategory($id);
+        $data ['articles'] = $articles;
+        $data ['pagination'] = $pagination;
+        $popular = Article::getPopular();
+        $recent = Article::getRecent();
+        $categories = Category::getAll();
+        
+        return $this->render('category',[
+            'articles'=> $data ['$articles'],
+            'pagination'=>$data ['pagination'],
+            'popular' => $popular,
+            'recent' => $recent,
+            'categories' => $categories
+            ]);
     }
     /**
      * Login action.
