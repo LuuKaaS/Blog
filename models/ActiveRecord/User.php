@@ -59,29 +59,29 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->hasMany(Comment::className(), ['user_id' => 'id']);
     }
 
-    public function getAuthKey()
+   public static function findIdentity($id)
     {
-        return $this->authKey;
+        return static::findOne($id);
     }
 
-    public function getId() 
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        //return static::findOne(['access_token' => $token]);
+    }
+
+    public function getId()
     {
         return $this->id;
     }
 
+    public function getAuthKey()
+    {
+        //return $this->authKey;
+    }
+
     public function validateAuthKey($authKey)
     {
-        return $this->authKey === $authKey;
-    }
-
-    public static function findIdentity($id): IdentityInterface 
-    {
-        return User::findOne($id);
-    }
-
-   public static function findIdentityByAccessToken($token, $type = null)
-    {
-        // TODO: Implement findIdentityByAccessToken() method.
+       // return $this->authKey === $authKey;
     }
     
     public static function findByUserName($username)

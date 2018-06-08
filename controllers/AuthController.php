@@ -20,7 +20,7 @@ class AuthController extends Controller
             return $this->goBack();
         }
 
-        $model->password = '';
+        
         return $this->render('/site/login', [
             'model' => $model,
         ]);
