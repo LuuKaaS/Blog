@@ -125,11 +125,7 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionSignup() 
-    {
-        $model = new Signup();
-        return $this->render('signup', ['model' => $model]);
-    }
+    
     /**
      * Displays about page.
      *
