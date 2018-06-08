@@ -84,9 +84,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
        // return $this->authKey === $authKey;
     }
     
-    public static function findByUserName($username)
+    public static function findByEmail($email)
     {
-        return User::find()->where(['name'=>$username])->one();
+        return User::find()->where(['email'=>$email])->one();
     }
     
     public function validatePassword($password)
@@ -102,6 +102,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function create()
     {
         return $this->save(false);
+    }
+    
+    public function getImage()
+    {
+        return $this->photo;
     }
 
 }

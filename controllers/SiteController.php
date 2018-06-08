@@ -9,9 +9,9 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\forms\LoginForm;
 use app\models\forms\ContactForm;
-use app\models\forms\Signup;
 use app\models\ActiveRecord\Article;
 use app\models\ActiveRecord\Category;
+use app\models\forms\CommentForm;
 
 
 class SiteController extends Controller
@@ -85,12 +85,17 @@ class SiteController extends Controller
         $popular = Article::getPopular();
         $recent = Article::getRecent();
         $categories = Category::getAll();
+        $comments = $article->comments;
+        $commentForm = new CommentForm();
         
         return $this->render('single',[
             'article' => $article,
             'popular' => $popular,
             'recent' => $recent,
-            'categories' => $categories
+            'categories' => $categories,
+            'comments' => $comments,
+            'commentForm' => $commentForm
+            
         ]);
     }
     

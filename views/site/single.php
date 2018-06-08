@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 ?>
 <!--main content start-->
 <div class="main-content">
@@ -39,44 +40,53 @@ use yii\helpers\Url;
                         </div>
                     </div>
                 </article>
-              
+              <?php if(!empty($comments)):?>
+                
+                <?php foreach ($comments as $comment):?>
                 <div class="bottom-comment"><!--bottom comment-->
                     <h4>3 comments</h4>
 
                     <div class="comment-img">
-                        <img class="img-circle" src="/images/comment-img.jpg" alt="">
+                        <img class="img-circle" src="<?= $comment->user->image;?>" alt="">
                     </div>
 
                     <div class="comment-text">
                         <a href="#" class="replay btn pull-right"> Replay</a>
-                        <h5>Rubel Miah</h5>
+                        <h5><?= $comment->user->name;?></h5>
 
                         <p class="comment-date">
-                            December, 02, 2015 at 5:57 PM
+                            <?= $comment->getDate();?>
                         </p>
 
 
-                        <p class="para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                            diam nonumy
-                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                            voluptua. At vero eos et cusam et justo duo dolores et ea rebum.</p>
+                        <p class="para"><?= $comment->text;?></p>
                     </div>
                 </div>
+                <?php endforeach;?>
+                
+                <?php endif ;?>
+                
                 <!-- end bottom comment-->
 
 
                 <div class="leave-comment"><!--leave comment-->
                     <h4>Leave a reply</h4>
+                    <?php $form = \yii\widgets\ActiveForm::begin([
+                        'action'=>['site/comment', 'id'=>$article->id],
+                        'options'=>['class'=>'form-horizontal contact-form', 'role'=> 'form']])?>
 
-
-                    <form class="form-horizontal contact-form" role="form" method="post" action="#">
+<!--                    <form class="form-horizontal contact-form" role="form" method="post" action="#">-->
                       
                         <div class="form-group">
                             <div class="col-md-12">
-                                    <textarea class="form-control" rows="6" name="message"
-                                    placeholder="Write Massage"></textarea>
+                              <?= $form->field($commentForm, 'comment')->textarea(['class'=>'form-control','placeholder'=>'Write Message']);?> 
+                                
+<!--                            <textarea class="form-control" rows="6" name="message"
+                                placeholder="Write Massage"></textarea>-->
+                                
                             </div>
                         </div>
+                        <?php \yii\widgets\ActiveForm::end();?>
                         <a href="#" class="btn send-btn">Post Comment</a>
                     </form>
                 </div><!--end leave comment-->
