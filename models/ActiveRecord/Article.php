@@ -5,6 +5,7 @@ namespace app\models\ActiveRecord;
 use Yii;
 use app\models\forms\ImageUpload;
 use app\models\ActiveRecord\Category;
+use app\models\ActiveRecord\Comment;
 use yii\helpers\ArrayHelper;
 use yii\data\Pagination;
 /**
@@ -138,7 +139,7 @@ class Article extends \yii\db\ActiveRecord
     {
         ArticleTag::deleteAll(['article_id'=>$this->id]);
     }
-    
+
     public function getDate()
     {
         return Yii::$app->formatter->asDate($this->date);
@@ -185,5 +186,10 @@ class Article extends \yii\db\ActiveRecord
     public function getComments()
     {
         return $this->hasMany(Comment::classname(),['article_id'=>'id']);
+    }
+    
+    public function getArticleComments()
+    {
+        return $this->getComments()->where(['status'=>0])->all();
     }
 }

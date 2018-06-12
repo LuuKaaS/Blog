@@ -71,6 +71,6 @@ class Comment extends \yii\db\ActiveRecord
     
     public function getDate()
     {
-        return Yii::$app->formatter->asDate($this->date);
+        return Yii::$app->formatter->asDatetime(date('Y-d-m h:i:s'));   //  asDate('now', 'yyyy-MM-dd');
     }
 }

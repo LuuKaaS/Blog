@@ -11,6 +11,7 @@ use app\models\forms\LoginForm;
 use app\models\forms\ContactForm;
 use app\models\ActiveRecord\Article;
 use app\models\ActiveRecord\Category;
+use app\models\ActiveRecord\Comments;
 use app\models\forms\CommentForm;
 
 
@@ -85,7 +86,7 @@ class SiteController extends Controller
         $popular = Article::getPopular();
         $recent = Article::getRecent();
         $categories = Category::getAll();
-        $comments = $article->comments;
+        $comments = $article->getArticleComments();
         $commentForm = new CommentForm();
         
         return $this->render('single',[
@@ -129,15 +130,17 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-
     
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
+    public function actionComment($id)
     {
-        return $this->render('about');
+        $model = new CommentForm();
+        
+        if ($model->load(Yii::$app->request->post()) && $model->saveComment($id))
+            {
+    //                Yii::$app->getSession()->setFlash('comment', 'Your comment will be added soon!');
+                return $this->redirect(['site/view','id'=>$id]);
+            }
+        
+                
     }
 }

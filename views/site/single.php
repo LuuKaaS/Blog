@@ -9,18 +9,18 @@ use yii\widgets\ActiveForm;
             <div class="col-md-8">
                 <article class="post">
                     <div class="post-thumb">
-                        <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]);?>"><img src="<?= $article->getImage();?>" alt=""></a>
+                        <a href="<?= Url::toRoute(['site/view','id'=>$article->id])?>"><img src="<?= $article->getImage();?>" alt=""></a>
                     </div>
                     <div class="post-content">
                         <header class="entry-header text-center text-uppercase">
-                            <h6><a href="<?= Url::toRoute(['site/category', 'id'=>$article->category])?>"> <?= $article->category?></a></h6>
+                            <h6><a href="<?= Url::toRoute(['site/category','id'=>$article->category])?>"> <?= $article->category?></a></h6>
 
                             <h1 class="entry-title"><a href="<?= Url::toRoute(['site/view','id'=>$article->id])?>"><?= $article->title?></a></h1>
 
 
                         </header>
                         <div class="entry-content">
-                           <?= $article->content?>
+                            <?= $article->content?>
                         </div>
                         <div class="decoration">
                             <a href="#" class="btn btn-default">Decoration</a>
@@ -29,7 +29,7 @@ use yii\widgets\ActiveForm;
 
                         <div class="social-share">
 							<span
-                                    class="social-share-title pull-left text-capitalize">By Rubel <?= $article->getDate();?></span>
+                                class="social-share-title pull-left text-capitalize">By <?= $article->user_id;?> On <?= $article->getDate();?></span>
                             <ul class="text-center pull-right">
                                 <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -40,56 +40,12 @@ use yii\widgets\ActiveForm;
                         </div>
                     </div>
                 </article>
-              <?php if(!empty($comments)):?>
-                
-                <?php foreach ($comments as $comment):?>
-                <div class="bottom-comment"><!--bottom comment-->
-                    <h4>3 comments</h4>
 
-                    <div class="comment-img">
-                        <img class="img-circle" src="<?= $comment->user->image;?>" alt="">
-                    </div>
-
-                    <div class="comment-text">
-                        <a href="#" class="replay btn pull-right"> Replay</a>
-                        <h5><?= $comment->user->name;?></h5>
-
-                        <p class="comment-date">
-                            <?= $comment->getDate();?>
-                        </p>
-
-
-                        <p class="para"><?= $comment->text;?></p>
-                    </div>
-                </div>
-                <?php endforeach;?>
-                
-                <?php endif ;?>
-                
-                <!-- end bottom comment-->
-
-
-                <div class="leave-comment"><!--leave comment-->
-                    <h4>Leave a reply</h4>
-                    <?php $form = \yii\widgets\ActiveForm::begin([
-                        'action'=>['site/comment', 'id'=>$article->id],
-                        'options'=>['class'=>'form-horizontal contact-form', 'role'=> 'form']])?>
-
-<!--                    <form class="form-horizontal contact-form" role="form" method="post" action="#">-->
-                      
-                        <div class="form-group">
-                            <div class="col-md-12">
-                              <?= $form->field($commentForm, 'comment')->textarea(['class'=>'form-control','placeholder'=>'Write Message']);?> 
-                                
-<!--                            <textarea class="form-control" rows="6" name="message"
-                                placeholder="Write Massage"></textarea>-->
-                                
-                            </div>
-                        </div>
-                        <?php \yii\widgets\ActiveForm::end();?>
-                        <a href="#" class="btn send-btn">Post Comment</a>
-                    </form>
-                </div><!--end leave comment-->
+             <?= $this->render('/partials/comment', [
+                 'article'=>$article,
+                 'comments'=>$comments,
+                 'commentForm'=>$commentForm
+             ])?>
             </div>
             <?= $this->render('/partials/sidebar', [
                 'popular'=>$popular,

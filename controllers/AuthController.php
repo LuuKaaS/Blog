@@ -26,6 +26,8 @@ class AuthController extends Controller
             'model' => $model,
         ]);
     }
+   
+   
     public function actionLogout()
     {
         Yii::$app->user->logout();
