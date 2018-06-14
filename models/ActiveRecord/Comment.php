@@ -34,6 +34,7 @@ class Comment extends \yii\db\ActiveRecord
         return [
             [['user_id', 'article_id', 'status'], 'integer'],
             [['text'], 'string', 'max' => 255],
+            [['date'], 'default', 'value'=> date('Y-m-d')],
             [['article_id'], 'exist', 'skipOnError' => true, 'targetClass' => Article::className(), 'targetAttribute' => ['article_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -71,6 +72,7 @@ class Comment extends \yii\db\ActiveRecord
     
     public function getDate()
     {
-        return Yii::$app->formatter->asDatetime(date('Y-d-m h:i:s'));   //  asDate('now', 'yyyy-MM-dd');
+        return Yii::$app->formatter->asDatetime(date('Y-d-m h:i:s'));   //          ; asDate('date', 'yyyy-MM-dd');
+       
     }
 }

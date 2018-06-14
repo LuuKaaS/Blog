@@ -13,6 +13,7 @@ use app\models\ActiveRecord\Article;
 use app\models\ActiveRecord\Category;
 use app\models\ActiveRecord\Comments;
 use app\models\forms\CommentForm;
+use app\models\ActiveRecord\Comment;
 
 
 class SiteController extends Controller
@@ -135,12 +136,24 @@ class SiteController extends Controller
     {
         $model = new CommentForm();
         
-        if ($model->load(Yii::$app->request->post()) && $model->saveComment($id))
+        if(Yii::$app->request->isPost)
+        {
+            $model->load(Yii::$app->request->post());
+            if($model->saveComment($id))
             {
-    //                Yii::$app->getSession()->setFlash('comment', 'Your comment will be added soon!');
                 return $this->redirect(['site/view','id'=>$id]);
-            }
+            } 
+        }    
+    }
+    
+    public function actionDelete($id)
+    {
+        $comment = Comment::findOne($id);
         
-                
+        if($comment->delete())
+        {
+//            var_dump($comment);die;
+            return $this->redirect(['site/view', 'id'=>$comment->article_id]);
+        }
     }
 }

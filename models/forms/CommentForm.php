@@ -25,9 +25,16 @@ class CommentForm extends Model
         $comment->text = $this->comment;
         $comment->user_id = Yii::$app->user->id;
         $comment->article_id = $article_id; 
-        $comment->status = 0;       
-        $comment->date= date('Y-d-m h:i:s');
+        $comment->status = 0;  
+        $comment->date = date('Y-d-m h:i:s');
 //        var_dump($comment);die;
         return $comment->save();
+    }
+    
+    public function deleteComment($id)
+    {
+        $comment = new Comment;
+        $comment = Comment::findOne($id);
+        return $comment->delete();
     }
 }
